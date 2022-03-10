@@ -1,3 +1,4 @@
+
 package PracticeGUI_FX;
 
 import javafx.application.Application;
