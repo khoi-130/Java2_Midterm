@@ -40,9 +40,17 @@ public class CircleObjectGUI extends Application {
 
     public void go() {
         try {
-        CircleGUI circle = new CircleGUI();
-        circle.setRadius(getRadius());
-        setArea(circle.getArea());
+            
+            if(isEmpty(txt1.getText())) {
+                System.out.println("Radius must have value");
+            } else if (!isNumeric(txt1.getText())) {
+                System.out.println("Radius must have a number");
+            } else {
+                CircleGUI circle = new CircleGUI();
+                circle.setRadius(getRadius());
+                setArea(circle.getArea());
+            }
+          
         } catch (Exception e) {
             System.out.println("Error calculating area");
         }
@@ -50,18 +58,31 @@ public class CircleObjectGUI extends Application {
     }
     
     public double getRadius() {
-        try {
+//        try {
         return Double.parseDouble(txt1.getText());
-        } catch (Exception e) {
-            System.out.println("Your input is invalid");
-        }
-        return 0;
+//        } catch (Exception e) {
+//            System.out.println("Your input is invalid");
+//        }
+//        return 0;
     }
     
     public void setArea(double value) {
         txt2.setText(value + "");
     }
-            
+    
+    public boolean isEmpty(String val) {
+        return val.trim().equals("");
+    }
+    
+    public boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(Exception e) {
+            return false;
+        }    
+    }     
+    
     public static void main(String[] args ) {
         launch(args);
     }
